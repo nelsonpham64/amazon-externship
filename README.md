@@ -2,7 +2,7 @@
 
 **Amazon Externship Project**
 
-Analyzed 130+ employee feedback records from Glassdoor and YouTube to identify the root causes of burnout at Amazon fulfillment centers — and delivered actionable recommendations to leadership.
+Analyzed 130+ employee feedback records from Glassdoor and YouTube to identify the root causes of burnout at Amazon fulfillment centers and delivered actionable recommendations to leadership.
 
 ---
 
