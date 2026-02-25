@@ -1,206 +1,128 @@
 # Amazon Workforce Sentiment & Burnout Analysis
 
-**Amazon Externship Project | NLP, Sentiment Analysis, Workforce Analytics**
+**Amazon Externship Project**
 
-Analyzed 130+ employee feedback records from Glassdoor and YouTube using Python and Natural Language Processing (NLP) to identify burnout drivers and deliver data-driven workforce recommendations to improve morale and retention.
-
----
-
-# Business Problem
-
-Amazon fulfillment center employees were experiencing significant burnout and exhaustion, but it was difficult to identify root causes due to the volume of unstructured feedback.
-
-This project aimed to answer:
-
-**What are the root causes of employee burnout, and which operational interventions would have the greatest impact on workforce morale and retention?**
+Analyzed 130+ employee feedback records from Glassdoor and YouTube to identify the root causes of burnout at Amazon fulfillment centers — and delivered actionable recommendations to leadership.
 
 ---
 
-# Key Results
+## The Problem
 
-* Identified **burnout as the most dominant workforce issue** across both employee and public feedback
-* Discovered **YouTube sentiment was significantly more negative than Glassdoor**, revealing dissatisfaction not fully captured in formal reviews
-* Found that **workload intensity, production pressure, and insufficient recovery time** were primary burnout drivers
-* Delivered **5+ actionable workforce recommendations**, including a pilot program designed to reduce fatigue and improve retention
+Amazon fulfillment center employees were experiencing significant burnout and exhaustion, but the volume of qualitative feedback made manual review impractical. The goal was to use data to systematically identify **what was causing burnout**, **who was most affected**, and **what could be done about it**.
 
 ---
 
-# Tools & Technologies
+## Data Sources
 
-* Python
-* pandas
-* NLTK
-* TextBlob
-* Matplotlib
-* Google Colab
-* Excel
+| Source | Format | Tone |
+|---|---|---|
+| Glassdoor Reviews | Structured (pros, cons, advice fields) | Mostly positive / neutral |
+| YouTube Comments & Transcripts | Unstructured, free-form text | Predominantly negative |
 
----
-
-# Dataset Overview
-
-Analyzed **130+ employee feedback records** from two sources:
-
-## Glassdoor Reviews
-
-* Structured employee reviews (pros, cons, advice)
-* Professional and balanced tone
-* Provided reliable internal workforce perspective
-
-## YouTube Comments & Transcripts
-
-* Unstructured public feedback
-* More emotionally direct and candid
-* Revealed workforce frustrations not fully expressed in formal reviews
+The contrast between platforms was itself a key finding — Glassdoor feedback was measured and professional, while YouTube revealed the raw emotional frustration that formal reviews tend to soften.
 
 ---
 
-# Methodology
+## What I Did
 
-## Data Cleaning & Preprocessing
-
-Built an end-to-end NLP pipeline to prepare raw text for analysis.
-
-Key steps included:
-
-* Loading raw CSV data into pandas DataFrames
-* Removing null values and duplicate records
-* Converting text to lowercase
-* Removing punctuation and stopwords using NLTK
-* Combining multiple review fields into a unified cleaned text column
-* Exporting cleaned datasets for analysis
-
-Relevant scripts:
-
-scripts/amazon_review_data_cleaning.py
-scripts/youtube_text_preprocessing.py
+- Ingested and analyzed **130+ unstructured employee feedback records** using Python (pandas, NLTK, TextBlob) to identify burnout and productivity risks impacting retention
+- Built an **end-to-end NLP pipeline** to clean, preprocess, and classify sentiment and themes — enabling scalable, repeatable feedback analysis
+- Synthesized findings into **5+ data-driven recommendations**, translating results into actionable insights for operational planning and workforce interventions
 
 ---
 
-## Keyword Analysis
+## NLP Pipeline
 
-Performed keyword frequency analysis to identify dominant workforce themes.
-
-Example keyword visualization:
-
-![Amazon Keyword Analysis](visuals/AmazonKeywords.png)
-
-![YouTube Keyword Analysis](visuals/YoutubeKeywords.png)
-
-Relevant scripts:
-
-scripts/amazon_review_keyword_analysis.py
-scripts/youtube_keyword_analysis.py
-
----
-
-## Sentiment Analysis
-
-Applied TextBlob sentiment classification to categorize feedback as:
-
-* Positive
-* Neutral
-* Negative
-
-This enabled structured comparison across platforms and identification of burnout trends.
+```
+Raw CSV Data
+    → Load into pandas DataFrames
+    → Lowercase + remove punctuation
+    → Strip English stopwords (NLTK)
+    → Combine text fields into single cleaned column
+    → Word frequency analysis (Counter)
+    → Filter noise words
+    → Sentiment classification (TextBlob)
+    → Visualize top 10 keywords (Matplotlib)
+```
 
 ---
 
-# Key Insights
+## Visuals
 
-Burnout emerged as the primary workforce risk factor.
+### Amazon (Glassdoor) — Top Keywords
+![Amazon Keywords](Visuals/AmazonKewords.png)
 
-Major drivers included:
-
-* High workload intensity
-* Aggressive productivity targets
-* Limited recovery time between tasks
-* Sustained physical and mental fatigue
-
-A key strategic insight:
-
-**Public sentiment on YouTube was significantly more negative than Glassdoor reviews, indicating formal reporting may underrepresent workforce dissatisfaction.**
+### YouTube — Top Keywords
+![YouTube Keywords](Visuals/YoutubeKeywords.png)
 
 ---
 
-# Business Recommendation
+## Key Findings
 
-Based on analysis findings, a targeted pilot program was proposed:
-
-## Task Rotation + Flexible Pacing Pilot
-
-**Objective:** Reduce fatigue and improve retention
-
-**Plan:**
-
-* Rotate associates between tasks to reduce repetitive strain
-* Temporarily adjust pacing during high-fatigue periods
-* Implement in one fulfillment zone during high-volume shifts
-
-**Success Metrics:**
-
-* Reduction in fatigue complaints
-* Improved morale feedback
-* Lower turnover risk indicators
+- **Burnout was the #1 theme** across both platforms — negative, emotionally charged feedback consistently pointed to exhaustion as the core issue
+- **Full-time associates were hit hardest** — longest hours, most cumulative physical fatigue, most expensive to lose to turnover
+- **Burnout drives a chain reaction:** burnout → lower morale → higher turnover → lower productivity
+- **Production targets were set by algorithms** optimized for speed, with no adjustment for task difficulty or experience level
+- **Break culture undermined recovery** — workload pressure made employees feel they couldn't afford to take their allotted breaks
+- **YouTube revealed what Glassdoor softened** — the platform gap itself was a meaningful signal
 
 ---
 
-# Project Structure
+## Recommendation
 
-amazon-workforce-sentiment-analysis/
+**Pilot: Task Rotation + Flexible Pacing**
 
-data/
-    glassdoor_cleaned_with_text.csv
-    youtube_sentiment.csv
+Team leads rotate associates between tasks and adjust pacing during high-fatigue periods.
 
-scripts/
-    amazon_review_data_cleaning.py
-    amazon_review_keyword_analysis.py
-    youtube_text_preprocessing.py
-    youtube_keyword_analysis.py
-
-visuals/
-    AmazonKeywords.png
-    YoutubeKeywords.png
-
-README.md
+| Detail | Description |
+|---|---|
+| Where | One zone with full-time associates |
+| Duration | 2-week pilot during high-volume shifts |
+| Owner | Learning Ambassador / Floor Team Lead |
+| Success Metrics | End-of-shift fatigue feedback, rotation frequency, reduction in strain complaints |
 
 ---
 
-# Skills Demonstrated
+## Tools & Technologies
 
-This project demonstrates the ability to:
-
-* Clean and process unstructured real-world data
-* Perform Natural Language Processing (NLP)
-* Conduct sentiment and keyword analysis
-* Extract meaningful business insights from qualitative data
-* Translate analysis into actionable business recommendations
-
----
-
-# Why This Project Matters
-
-This project reflects real-world analyst responsibilities, including:
-
-* Workforce analytics
-* Risk identification
-* Operational improvement analysis
-* Data-driven decision support
-
-These skills are directly applicable to:
-
-* Data Analyst roles
-* Business Analyst roles
-* Workforce Analytics
-* Consulting
+| Tool | Purpose |
+|---|---|
+| Python | Core analysis language |
+| pandas | Data loading, cleaning, manipulation |
+| NLTK | Stopword removal, text preprocessing |
+| TextBlob | Sentiment classification |
+| Matplotlib | Keyword frequency visualizations |
+| Google Colab | Development environment |
+| Excel | Data review and organization |
 
 ---
 
-# Author
+## Project Structure
 
-Nelson Pham
-Business Analytics Student, California State University, Fullerton
+```
+amazon-externship/
+├── Visuals/
+│   ├── AmazonKewords.png
+│   └── YoutubeKeywords.png
+├── notebooks/
+│   ├── final_amazon_pandas.py    # Data cleaning & validation
+│   ├── keyword_amazon.py         # Glassdoor keyword analysis
+│   ├── youtube_text.py           # YouTube text preprocessing
+│   └── keyword_youtube.py        # YouTube keyword analysis
+└── README.md
+```
 
-Portfolio: https://nelsonpham64.github.io
-GitHub: https://github.com/nelsonpham64
+---
+
+## Presentation
+
+[View Executive Slides](https://docs.google.com/presentation/d/1aet6Slhmr4ElIhqv2aSs5YQYuEiR4LA6blf3l4LA2LI/edit)
+
+---
+
+## Author
+
+**Nelson Pham**
+Business Analytics Student — Cal State Fullerton
+
+[Portfolio](https://nelsonpham64.github.io) · [LinkedIn](https://www.linkedin.com/in/nelsonpham64/) · [GitHub](https://github.com/nelsonpham64)
